@@ -1,3 +1,4 @@
+# DOWNLOAD [HERE](https://github.com/valolock/valolock/releases)
 # ValoLock
 
 ValoLock is a tool designed for Valorant players who wants to instalock(Yeah, I see you Jett main) ValoLock detects the game screen and automatically selects your preferred agent, ensuring you get to play the role you excel at, every game.
