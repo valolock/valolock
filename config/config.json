@@ -1,0 +1,11 @@
+{
+    "agent_positions": {
+      "Agent": [
+        "Breach", "Brimstone", "Chamber", "Cypher", "Fade", "Iso", "Jett", "Kayo", "Killjoy", "Neon", "Phoenix", "Raze", "Reyna", "Sage", "Skye", "Sova", "Yoru", "Astra", "Deadlock", "Gekko", "Harbor", "Omen", "Viper"
+      ],
+      "Position": [
+        [648, 820], [710, 812], [806, 799], [865, 803], [978, 802], [1034, 804], [1108, 805], [1208, 811], [1273, 806], [655, 884], [722, 876], [809, 881], [884, 888], [948, 893], [1051, 899], [1110, 892], [1194, 891], [1284, 893], [659, 965], [715, 960], [804, 967], [872, 967], [953, 972]
+      ]
+    },
+    "lock_in_button_position": [949, 705]
+  }  
