@@ -44,6 +44,7 @@ Modify `config/config.json` to customize the positions of agents and the lock-in
 
 - **Early Selection Bug**: There's a known issue where ValoLock attempts to select the agent before the selection screen is fully loaded. Any suggestions for resolving this are welcome.
 - **Security Notice**: Windows may present a warning due to the executable's unrecognized status. We encourage users to review the source code if they have security concerns. Your safety and trust are paramount.
+- **Fullscreen mode**: This program only works in windowed/borderless.
 
 ## Contributing
 
