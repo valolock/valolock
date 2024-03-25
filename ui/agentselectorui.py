@@ -1,6 +1,6 @@
 import logging
 import threading
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QComboBox, QLabel, QSpacerItem, QSizePolicy, QMenuBar
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QComboBox, QLabel, QSpacerItem, QSizePolicy, QMenuBar, QMessageBox
 from PyQt5.QtGui import QIcon
 import cv2
 import numpy as np
@@ -14,6 +14,7 @@ class AgentSelector(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.show_message_box()
     
     def initUI(self):
         self.setWindowTitle('valolock - instalocker')
@@ -62,6 +63,15 @@ class AgentSelector(QWidget):
         qMenuBar = QMenuBar(self)
         qMenuBar.addMenu(text)
         return qMenuBar
+    def show_message_box(self):
+        if Config.opened_the_program_count == 0:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("REMINDER!")
+            msg.setInformativeText("This program does NOT work in fullscreen mode! Please make sure that Valorant is in windowed mode, when loading into agent select. This can be done quickly with ctrl-enter(but make sure you maximize the window afterwards) or in the Valorant settings.")
+            msg.setWindowTitle("REMINDER!")
+            msg.exec_()
+            Config.increment_opened_the_program_count()
     
     def start_selection(self):
         AgentSelector.isRunning = True
