@@ -6,6 +6,12 @@ ValoLock is a tool designed for Valorant players who wants to instalock(Yeah, I 
 ### Important Notice
 Before diving into ValoLock, please review the **Warning** section to understand potential limitations and considerations.
 
+### Disclaimer and User Responsibility
+The use of ValoLock and other similar tools may violate the terms of service of Valorant or other games. We take no responsibility for any consequences, including but not limited to account suspension or banning, resulting from the use of ValoLock. We do not condone the use of third-party software for competitive advantage and urge all users to consider the potential risks and terms of service of the game. Use ValoLock at your own risk.
+
+That said, Valolock essentially has nothing to do with valorant. It just captures your screen and clicks on it. It doesn't that care that its Valorant.
+Whether instalocking in Valorant is morally okay, yes, you should be able to play whatever agent you want. Instalockers will always be in the game, at its current state.
+
 ## Features
 
 - **Agent Auto-Selection**: Automatically selects your preferred agent using image recognition.
