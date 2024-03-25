@@ -14,10 +14,11 @@ class AgentSelector(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
-        self.create_message_box(QMessageBox.Information, "REMINDER!", "This program does NOT work in fullscreen mode! Please make sure that Valorant is in windowed mode, when loading into agent select. This can be done quickly with ctrl-enter(but make sure you maximize the window afterwards) or in the Valorant settings.", "REMINDER!")
-        Config.increment_opened_the_program_count()
+
     
     def initUI(self):
+        self.create_message_box(QMessageBox.Information, "REMINDER!", "This program does NOT work in fullscreen mode! Please make sure that Valorant is in windowed mode, when loading into agent select. This can be done quickly with ctrl-enter(but make sure you maximize the window afterwards) or in the Valorant settings.", "REMINDER!")
+        Config.increment_opened_the_program_count()
         self.setWindowTitle('valolock - instalocker ' + Config.read_version_from_file('version.txt'))
         self.setFixedSize(400, 300)
         self.setWindowIcon(QIcon('assets/jettlogo.PNG'))
@@ -36,9 +37,11 @@ class AgentSelector(QWidget):
         self.agent_dropdown = self.create_agent_dropdown()
         self.start_button = self.create_button('Start', self.start_selection)
         self.stop_button = self.create_button('Stop', self.stop_selection, True)
+        self.status_label = self.create_label('Status: Idle', False)
         
         layout.addWidget(self.agent_dropdown)
         layout.addWidget(self.start_button)
+        layout.addWidget(self.status_label)
         layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         layout.addWidget(self.stop_button)
 
@@ -79,6 +82,7 @@ class AgentSelector(QWidget):
         AgentSelector.isRunning = True
         logging.info('Started instalocker. Waiting for agent selection screen.')
         selected_agent = self.agent_dropdown.currentText()
+        self.status_label.setText(f'Status: Running \nLocking: {selected_agent}')
         position = Config.agents_df[Config.agents_df['Agent'] == selected_agent]['Position'].iloc[0]
         threading.Thread(target=self.select_agent, args=(position,)).start()
         self.toggle_ui(True)
@@ -86,6 +90,7 @@ class AgentSelector(QWidget):
     def stop_selection(self):
         AgentSelector.isRunning = False
         logging.info('Stopped instalocker.')
+        self.status_label.setText('Status: Idle')
         self.toggle_ui(False)
     
     def toggle_ui(self, isRunning):
@@ -99,6 +104,7 @@ class AgentSelector(QWidget):
     
     def select_agent(self, position):
         detect_screen_and_select_agent(position, 'assets/lockInButton.PNG')
+        self.stop_selection()
         
 
 def detect_screen_and_select_agent(agent_position, reference_image_path):
