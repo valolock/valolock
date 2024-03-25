@@ -14,7 +14,8 @@ class AgentSelector(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
-        self.show_message_box()
+        self.create_message_box(QMessageBox.Information, "REMINDER!", "This program does NOT work in fullscreen mode! Please make sure that Valorant is in windowed mode, when loading into agent select. This can be done quickly with ctrl-enter(but make sure you maximize the window afterwards) or in the Valorant settings.", "REMINDER!")
+        Config.increment_opened_the_program_count()
     
     def initUI(self):
         self.setWindowTitle('valolock - instalocker ' + Config.read_version_from_file('version.txt'))
@@ -63,16 +64,17 @@ class AgentSelector(QWidget):
         qMenuBar = QMenuBar(self)
         qMenuBar.addMenu(text)
         return qMenuBar
-    def show_message_box(self):
+    
+    def create_message_box(self, icon, text, informative_text, title):
         if Config.opened_the_program_count == 0:
             msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
-            msg.setText("REMINDER!")
-            msg.setInformativeText("This program does NOT work in fullscreen mode! Please make sure that Valorant is in windowed mode, when loading into agent select. This can be done quickly with ctrl-enter(but make sure you maximize the window afterwards) or in the Valorant settings.")
-            msg.setWindowTitle("REMINDER!")
+            msg.setIcon(icon)
+            msg.setText(text)
+            msg.setInformativeText(informative_text)
+            msg.setWindowTitle(title)
             msg.exec_()
-            Config.increment_opened_the_program_count()
-    
+            return msg
+        
     def start_selection(self):
         AgentSelector.isRunning = True
         logging.info('Started instalocker. Waiting for agent selection screen.')
