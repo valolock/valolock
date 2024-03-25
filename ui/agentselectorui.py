@@ -17,7 +17,7 @@ class AgentSelector(QWidget):
         self.show_message_box()
     
     def initUI(self):
-        self.setWindowTitle('valolock - instalocker')
+        self.setWindowTitle('valolock - instalocker ' + Config.read_version_from_file('version.txt'))
         self.setFixedSize(400, 300)
         self.setWindowIcon(QIcon('assets/jettlogo.PNG'))
 

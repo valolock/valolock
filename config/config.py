@@ -19,3 +19,10 @@ class Config:
         with open('config/config.json', 'w') as config_file:
             Config.config['opened_the_program_count'] = Config.opened_the_program_count
             json.dump(Config.config, config_file, indent=4)
+
+    def read_version_from_file(file_path):
+        try:
+            with open(file_path, 'r') as file:
+                return file.read().strip()  # Read the version and strip any whitespace
+        except FileNotFoundError:
+            return "unknown"  # If the file does not exist, return 'unknown'
