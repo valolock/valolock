@@ -5,6 +5,7 @@ from PyQt5.QtGui import QIcon
 import cv2
 import numpy as np
 import pyautogui
+import keyboard
 
 from config.config import Config
 
@@ -14,6 +15,7 @@ class AgentSelector(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
+        keyboard.add_hotkey('f5', self.toggle_selection)
 
     
     def initUI(self):
@@ -92,6 +94,12 @@ class AgentSelector(QWidget):
         logging.info('Stopped instalocker.')
         self.status_label.setText('Status: Idle')
         self.toggle_ui(False)
+    
+    def toggle_selection(self):
+        if self.isRunning:
+            self.stop_selection()
+        else:
+            self.start_selection()
     
     def toggle_ui(self, isRunning):
         self.stop_button.setVisible(isRunning)
